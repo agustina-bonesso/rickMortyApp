@@ -25,7 +25,6 @@ export function CharacterCard(charakterElement) {
           </div>
 
   `;
-  console.log(charakterElement);
   return card;
 }
 
