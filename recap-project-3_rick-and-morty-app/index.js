@@ -1,3 +1,5 @@
+import { CharacterCard } from "./components/CharacterCard/CharacterCard.js";
+
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector('[data-js="search-bar-container"]');
 const searchBar = document.querySelector('[data-js="search-bar"]');
@@ -12,8 +14,6 @@ let page = 1;
 let searchQuery = "";
 
 // fetch data
-import { CharacterCard } from "./components/CharacterCard/CharacterCard.js";
-
 async function fetchCharacters() {
   cardContainer.innerHTML = "";
   const response = await fetch(
@@ -30,14 +30,14 @@ async function fetchCharacters() {
 }
 fetchCharacters();
 
-nextButton.addEventListener("click", async () => {
+nextButton.addEventListener("click", () => {
   if (page < maxPage) {
     page++;
     fetchCharacters();
   }
 });
 
-prevButton.addEventListener("click", async () => {
+prevButton.addEventListener("click", () => {
   if (page > 1) {
     page--;
     fetchCharacters();
@@ -47,7 +47,6 @@ prevButton.addEventListener("click", async () => {
 searchBar.addEventListener("submit", (event) => {
   event.preventDefault();
   searchQuery = event.target.query.value;
-  console.log(searchQuery);
   page = 1;
   fetchCharacters();
 });
